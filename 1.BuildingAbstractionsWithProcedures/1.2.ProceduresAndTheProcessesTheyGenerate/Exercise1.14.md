@@ -87,4 +87,18 @@
     cc=39-5-->zero24(0)
 ```
 
-In total, we have 4 of `1` and 24 of `0`. For `cc`, it runs 55 steps.
+In total, we have 4 of `1` and 24 of `0`. So the result of `(count-change 11)` is `4`
+
+It runs `55` steps (total amount of nodes) and need `15` spaces (maximum depth).
+
+For the case of $n$, the root node `(count-change n)` will be evaluated to `(cc n 5)`, then this first child node will be evaluated to two nodes, `(cc n 4)` and `(cc (- n (first-denomination 5)) 5)` and so on.
+
+Then we can infer that for the each node in the tree as `(cc i k)` in which $i\le n, k\le 5$, it will evaluated to `(cc i (- k 1))` and `(cc (- i (first-denomination k)) k)` until $i\le0$ or $k=0$.
+
+Although the exact amount of the nodes depends on the series of `first-denomination` of $k$, we can consider the maximum nodes case is that all the `first-denomination` of $k$ is `1`. That means each node `(cc i k)` will be evaluated to `(cc (- i 1) k)` and `(cc i (- k 1))` until $i=0$ or $k=0$.
+
+So the maximum amount nodes of `(count-change n)` is
+
+$$
+  NodeAmount_{maximum}(n, m) = NodeAmount_{maximum}(n-1, m) + NodeAmount_{maximum}(n, m-1)
+$$
