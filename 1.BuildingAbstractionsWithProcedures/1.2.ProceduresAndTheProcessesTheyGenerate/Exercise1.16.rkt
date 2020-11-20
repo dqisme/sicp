@@ -7,4 +7,4 @@
       ((even? n) (fast-expt-iter
                   a (* b b) (/ n 2)))
       (else (fast-expt-iter
-             (* a b) b (- n 1)))))
+             (* a b) b (- n 1))))))
