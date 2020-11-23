@@ -1,5 +1,7 @@
 # Exercise 1.3
 
+Starting from a straight forward solution.
+
 ```lisp
 (define (sum-square-of-max-two-numbers x y z)
   (+
