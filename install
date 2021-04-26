@@ -3,3 +3,5 @@ asdf install racket 8.0
 asdf global racket 8.0
 raco pkg update --auto racket-lib
 raco pkg update --auto main-distribution
+raco pkg install sicp
+raco pkg install racket-langserver
